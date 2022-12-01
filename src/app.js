@@ -7,10 +7,10 @@ function component() {
     // Lodash, currently included via a script, is required for this line to work
     // Lodash, now imported by this script
     element.innerHTML = _.join(['Hello', 'webpack'], ' ')
-    element.classList.add("hello")
+    element.classList.add('hello')
 
     return element
-    const x = "hello"
+    
     // eslint-disable-next-line no-unused-expressions
 }
 
