@@ -1,3 +1,4 @@
+
 const Gameboard = () => {
   // const placeShip = (array)
   let gameboard
@@ -13,13 +14,10 @@ const Gameboard = () => {
   })()
 
   const receiveAttack = (x,y) => {
-    const cell = gameboard[x][y]
-    cell.isShot = true
-
+    gameboard[x][y].isShot = true
   }
 
   const placeShip = (ship) => {
-    console.log(ship.getLength())
     if(gameboard[0].length - 4 >= ship.getLength()) {
       for(let i = 0; i < ship.getLength(); i++) {
         gameboard[0][4+i].hasShip = true
@@ -27,7 +25,7 @@ const Gameboard = () => {
     }
   }
 
-  const checkCellhasShip = (ship) => {
+  const checkhasShip = (ship) => {
     for(let i = 0; i < ship.getLength(); i++) {
       if(gameboard[0][4+i].hasShip === true) {
         return true
@@ -35,7 +33,18 @@ const Gameboard = () => {
     }
     return false
   }
-  return {gameboard, receiveAttack, placeShip, checkCellhasShip}
+
+  function checkSunk(ships) {
+    for(let i = 0; i < ships.length; i++) {
+      if(ships[i].getSunk() === false) {
+        return false
+      }
+    }
+    return true
+  }
+ 
+  
+  return {gameboard, receiveAttack, placeShip, checkhasShip, checkSunk}
 }
 
 

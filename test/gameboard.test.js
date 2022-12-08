@@ -11,9 +11,16 @@ import Ship from '../src/ship'
 describe('Gameboard functions', () => {
   let gameboard
   let carrier
+  let destroyer
+  let ships
   beforeEach(() => {
     gameboard = Gameboard()
-    carrier = Ship(5)
+    carrier = Ship(1)
+    destroyer = Ship(2)
+    gameboard.placeShip(carrier)
+    destroyer.updateHits()
+    destroyer.updateHits()
+    ships = [carrier, destroyer]
   })
   test.skip('create gamebard', () => {
     const arr = new Array(10).fill().map(() => new Array(10).fill({ hasShip: false, isShot: false }));
@@ -21,16 +28,23 @@ describe('Gameboard functions', () => {
   })
 
   test.skip('placing ship on board', () => {
-    gameboard.placeShip(carrier)
+    
     expect(gameboard.gameboard[0][4].hasShip).toBeTruthy()
   })
 
-  test('check index has ship', () => {
+  test.skip('check index has ship', () => {
     gameboard.gameboard[0][0].hasShip = true
     expect(gameboard.checkCellhasShip(carrier)).toBeTruthy()
+  })
+
+  test('check for all ships sunk ', () => {
+    expect(gameboard.checkSunk(ships)).toBe(false)
+
   })
   test.skip('grid update isShot', () => {
     gameboard.receiveAttack(0,0)
     expect(gameboard.gameboard[0][0].isShot).toBeTruthy()
   })
 })
+
+

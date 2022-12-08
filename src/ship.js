@@ -22,6 +22,7 @@ const Ship = (len) => {
 
   const updateHits = () => {
     hits += 1
+    isSunk()
   }
   const isSunk = () => {
     if(hits === length) {
