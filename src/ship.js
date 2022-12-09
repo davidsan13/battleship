@@ -10,7 +10,6 @@ const Ship = (len) => {
   const length = len
   let hits = 0
   let sunk = false
-  let location = []
 
   const getLength = () => length
   const getHits = () => hits
@@ -29,10 +28,6 @@ const Ship = (len) => {
       sunk = true
     }
   }
-  const updateLocation = (array) => {
-    location = array
-    console.log(location)
-  }
 
   return {
     getLength,
@@ -42,7 +37,7 @@ const Ship = (len) => {
     hit,
     updateHits,
     isSunk,
-    updateLocation}
+  }
 }
 
 export default Ship

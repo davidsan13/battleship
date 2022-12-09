@@ -1,23 +1,19 @@
 /* eslint-disable no-undef */
 import Gameboard from '../src/gameboard'
 import Ship from '../src/ship'
-/*
-- miss attacks
-- check if all ship sunk
-- receiveAttack
-*/
-
 
 describe('Gameboard functions', () => {
   let gameboard
   let carrier
   let destroyer
   let ships
+  let location
   beforeEach(() => {
+    location = [0,4]
     gameboard = Gameboard()
     carrier = Ship(1)
     destroyer = Ship(2)
-    gameboard.placeShip(carrier)
+    gameboard.placeShip(carrier, location)
     destroyer.updateHits()
     destroyer.updateHits()
     ships = [carrier, destroyer]
@@ -27,17 +23,18 @@ describe('Gameboard functions', () => {
     expect(gameboard.gameboard[0][0]).toEqual(arr[0][0])
   })
 
-  test.skip('placing ship on board', () => {
-    
-    expect(gameboard.gameboard[0][4].hasShip).toBeTruthy()
+  test('placing ship on board', () => {
+    const location = [0,4]
+    // gameboard.placeShip(destroyer, location)
+    expect(gameboard.placeShip(destroyer, location)).toBe(0)
   })
 
   test.skip('check index has ship', () => {
     gameboard.gameboard[0][0].hasShip = true
-    expect(gameboard.checkCellhasShip(carrier)).toBeTruthy()
+    expect(gameboard.checkhasShip(carrier, 0, 0)).toBeTruthy()
   })
 
-  test('check for all ships sunk ', () => {
+  test.skip('check for all ships sunk ', () => {
     expect(gameboard.checkSunk(ships)).toBe(false)
 
   })

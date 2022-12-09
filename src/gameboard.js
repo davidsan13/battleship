@@ -7,7 +7,7 @@ const Gameboard = () => {
     gameboard = (new Array(10)).fill().map(() => new Array(10).fill());
     for(let i = 0; i<10; i++) {
       for(let j = 0; j<10; j++){
-        gameboard[i][j] = { hasShip: false, isShot: false }
+        gameboard[i][j] = {hasShip: false, isShot: false}
       }
     }
     return gameboard
@@ -17,17 +17,22 @@ const Gameboard = () => {
     gameboard[x][y].isShot = true
   }
 
-  const placeShip = (ship) => {
-    if(gameboard[0].length - 4 >= ship.getLength()) {
+  const placeShip = (ship, location) => {
+    const x = location[0]
+    const y = location[1]
+    if(checkhasShip(ship, x, y)) return 1
+    if(gameboard[location[x]].length - y >= ship.getLength()) {
       for(let i = 0; i < ship.getLength(); i++) {
-        gameboard[0][4+i].hasShip = true
+        gameboard[x][y+i].hasShip = true
       }
     }
+    return 0
+    
   }
 
-  const checkhasShip = (ship) => {
+  const checkhasShip = (ship, x, y) => {
     for(let i = 0; i < ship.getLength(); i++) {
-      if(gameboard[0][4+i].hasShip === true) {
+      if(gameboard[x][y+i].hasShip === true) {
         return true
       }
     }
