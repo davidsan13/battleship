@@ -6,7 +6,7 @@ Submarine: 3
 Destroyer: 2
 */
 
-const Ship = (len) => {
+const Ship = (len, name) => {
   const length = len
   let hits = 0
   let sunk = false
@@ -14,10 +14,8 @@ const Ship = (len) => {
   const getLength = () => length
   const getHits = () => hits
   const getSunk = () => sunk
-  const getLocation = () => location
-  const hit = () => {
-    hits += 1
-  }
+  const getName = () => name
+  
 
   const updateHits = () => {
     hits += 1
@@ -33,10 +31,9 @@ const Ship = (len) => {
     getLength,
     getHits,
     getSunk,
-    getLocation,
-    hit,
     updateHits,
     isSunk,
+    getName,
   }
 }
 
