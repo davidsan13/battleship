@@ -21,8 +21,7 @@ describe('Player object', () => {
   })
   test('attack opponent board', () => {
     player1.attack(array, player2)
-    player1.attack([0,1], player2)
-    expect(player2.gameboard.gameboard[0][0].hasShip).toBeTruthy()
-    expect(carrier.getSunk()).toBe(true)
+    expect(player2.gameboard.gameboard[0][0].isShot).toBeTruthy()
+    expect(carrier.getHits()).toBe(1)
   })
 })

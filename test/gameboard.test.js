@@ -14,8 +14,10 @@ describe('Gameboard functions', () => {
     carrier = Ship(1, 'carrier')
     destroyer = Ship(2, 'destroyer')
     gameboard.placeShip(carrier, location)
+    gameboard.placeShip(destroyer, [1,3])
     destroyer.updateHits()
     destroyer.updateHits()
+    
     ships = [carrier, destroyer]
   })
   test.skip('create gamebard', () => {
@@ -42,7 +44,7 @@ describe('Gameboard functions', () => {
     expect(gameboard.checkSunk(ships)).toBe(false)
 
   })
-  test('grid update isShot', () => {
+  test.skip('grid update isShot', () => {
     // gameboard.receiveAttack(0,4)
     const ship = gameboard.gameboard[0][4].name
     expect(gameboard.gameboard[0][4].isShot).toBeFalsy()
@@ -51,6 +53,13 @@ describe('Gameboard functions', () => {
   })
   test.skip('gameboard ships array push', () => {
     expect(gameboard.getShips()).toBe([carrier])
+  })
+
+  test('check if all ships on board is sunk', () => {
+    console.log(carrier.getSunk())
+    expect(gameboard.checkSunk(gameboard.getShips())).toBeFalsy()
+    carrier.updateHits()
+    expect(gameboard.checkSunk(gameboard.getShips())).toBeTruthy()
   })
 })
 

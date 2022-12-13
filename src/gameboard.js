@@ -1,3 +1,4 @@
+import { isObjectLike } from "lodash";
 
 const Gameboard = () => {
   // const placeShip = (array)
@@ -49,13 +50,20 @@ const Gameboard = () => {
     return false
   }
 
-  function checkSunk(ships) {
-    for(let i = 0; i < ships.length; i++) {
-      if(ships[i].getSunk() === false) {
-        return false
-      }
-    }
-    return true
+  function checkSunk(obj) {
+    // for(const key in Obj) {
+    //   if(object[key].getSunk() === false) {
+    //     return false
+    //   }
+    // }
+    let message = true
+    Object.keys(obj).forEach((key) => {
+      if(obj[key].getSunk() === false) {
+        console.log(obj[key])
+        message = false
+      } 
+    })
+    return message
   }
  
   function notification(x,y) {
