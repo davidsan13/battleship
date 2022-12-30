@@ -1,7 +1,7 @@
 import Gameboard from './gameboard'
-const Player = (opponentBoard) => {
+const Player = () => {
   const gameboard = Gameboard()
-  function attack(array){
+  function attack(array, opponentBoard){
     opponentBoard.gameboard.receiveAttack(array[0],array[1])
     opponentBoard.gameboard.notification(array[0],array[1])
   }
