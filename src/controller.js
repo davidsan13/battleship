@@ -5,9 +5,13 @@ import Ship from './ship'
 const Controller = () => {
   let player
   let ai
+  let playerBoard
+  let aiBoard
+  let playerShips = []
     function startGame() {
       player = Player()
       ai = Player()
+
         // console.log(player)
       return {player, ai}
     }
@@ -25,8 +29,26 @@ const Controller = () => {
       const cruiser = Ship(3)
       const submarine = Ship(3)
       const destroyer = Ship(2)
+      playerShips.push(carrier, battleship, cruiser, submarine, destroyer)
     }
-    return {startGame, placeShip, getPlayer}
+
+    function getShips() {
+      return playerShips
+    }
+    function createBoard() {
+      playerBoard = Gameboard();
+    }
+
+    function placeShips() {
+        playerShips.forEach(ships => {
+          let x = Math.floor(Math.random() * 10);
+          let y = Math.floor(Math.random() * 10);
+          let location = [x,y]
+          playerBoard.placeShip(ship,location)
+        })
+      
+    }
+    return {startGame, createShips, placeShip, getPlayer, getShips}
 }
 
 export default Controller

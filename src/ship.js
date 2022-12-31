@@ -10,12 +10,13 @@ const Ship = (len, name) => {
   const length = len
   let hits = 0
   let sunk = false
+  let shipPlaced = false
 
   const getLength = () => length
   const getHits = () => hits
   const getSunk = () => sunk
   const getName = () => name
-  
+  const getPlaced = () => shipPlaced
 
   const updateHits = () => {
     hits += 1
@@ -27,6 +28,10 @@ const Ship = (len, name) => {
     }
   }
 
+  const updatePlaced = () => {
+    shipPlaced = true
+  }
+
   return {
     getLength,
     getHits,
@@ -34,6 +39,8 @@ const Ship = (len, name) => {
     updateHits,
     isSunk,
     getName,
+    getPlaced,
+    updatePlaced
   }
 }
 
