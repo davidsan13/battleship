@@ -5,10 +5,8 @@ describe('Controller game loop', () => {
   test('startGame function', () => {
     let gameCont = Controller()
     gameCont.startGame()
-    const ai = Player()
-    gameCont.createShips()
     const player = gameCont.getShips()
-    console.log(player)
+    // console.log(gameCont.playerBoard)
     // expect(player.gameboard.gameboard[0][0]).toEqual(ai.gameboard.gameboard[0][0])
   })
 })

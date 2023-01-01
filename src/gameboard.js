@@ -29,21 +29,22 @@ const Gameboard = () => {
   const placeShip = (ship, location) => {
     const x = location[0]
     const y = location[1]
+    // console.log(gameboard)
     if(checkhasShip(ship, x, y)) return 1
-    if(gameboard[location[x]].length - y >= ship.getLength()) {
-      for(let i = 0; i < ship.getLength(); i++) {
-        gameboard[x][y+i].hasShip = true
-        gameboard[x][y+i].name = ship.getName()
-      }
-      ships[ship.getName()] = ship
+    for(let i = 0; i < ship.getLength(); i++) {
+      gameboard[x][y+i].hasShip = true
+      gameboard[x][y+i].name = ship.getName()
     }
+    ships[ship.getName()] = ship
+    ship.updatePlaced()
+    console.log(gameboard)
     return 0
     
   }
 
   const checkhasShip = (ship, x, y) => {
     for(let i = 0; i < ship.getLength(); i++) {
-      if(gameboard[x][y+i].hasShip === true) {
+      if(y+i > 9 || gameboard[x][y+i].hasShip === true) {
         return true
       }
     }
@@ -66,6 +67,7 @@ const Gameboard = () => {
     return message
   }
  
+  // review notif with attack
   function notification(x,y) {
     const cell = gameboard[x][y]
     let message

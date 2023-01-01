@@ -11,6 +11,7 @@ const Ship = (len, name) => {
   let hits = 0
   let sunk = false
   let shipPlaced = false
+  
 
   const getLength = () => length
   const getHits = () => hits
