@@ -14,7 +14,7 @@ const Controller = () => {
         return player
     }
     function getAi() {
-      return ai
+        return ai
     }
     function getShips() {
         return playerShips
@@ -52,6 +52,7 @@ const Controller = () => {
     function startGame() {
         player = Player()
         ai = Player()
+        console.log(ai)
         playerShips = createShips()
         aiShips = createShips()
         aiBoard = createBoard()

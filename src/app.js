@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import './style.css'
 import Main from './components/main'
+import './assets/css/style.css'
 
 function component() {
     
