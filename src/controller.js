@@ -52,13 +52,13 @@ const Controller = () => {
     function startGame() {
         player = Player()
         ai = Player()
-        console.log(ai)
         playerShips = createShips()
         aiShips = createShips()
         aiBoard = createBoard()
         playerBoard = createBoard()
         placeShips(playerShips, playerBoard)
         placeShips(aiShips, aiBoard)
+        console.log(playerBoard)
     }
 
     return {

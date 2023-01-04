@@ -18,13 +18,13 @@ const Gameboard = () => {
     const getShips = () => ships
 
     const receiveAttack = (x, y) => {
-      const cell = gameboard[x][y]
-      let message
-      cell.isShot = true
-      if (cell.hasShip) {
-        const ship = ships[cell.name]
-        ship.updateHits()
-      }
+        const cell = gameboard[x][y]
+        let message
+        cell.isShot = true
+        if (cell.hasShip) {
+            const ship = ships[cell.name]
+            ship.updateHits()
+        }
     }
     const placeShip = (ship, location) => {
         const x = location[0]

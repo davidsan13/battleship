@@ -58,4 +58,52 @@ html {
   font-size: 62.5%;
   font-family: sans-serif;
 }
+
+.menu-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  background-color: #cfebf3;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4rem;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.menu-container .title {
+  font-size: 6rem;
+  background: -webkit-gradient(linear, left top, right top, color-stop(40%, #007698), color-stop(#fa6262), color-stop(80%, black));
+  background: linear-gradient(90deg, #007698 40%, #fa6262, black 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShine 8s ease-in-out infinite alternate-reverse;
+  background-size: 300%;
+  background-position: -100%;
+}
+
+.menu-container .start-btn {
+  background: none;
+}
+
+@-webkit-keyframes textShine {
+  to {
+    background-position: 100%;
+  }
+}
+
+@keyframes textShine {
+  to {
+    background-position: 100%;
+  }
+}
 /*# sourceMappingURL=styles.css.map */

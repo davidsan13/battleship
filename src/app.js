@@ -1,14 +1,14 @@
 import _ from 'lodash'
 import './style.css'
 import Main from './components/main'
-import './assets/css/style.css'
+import './assets/styles.css'
+import {StartMenu, listener} from './components/startmenu'
 
 function component() {
-    
+    document.body.appendChild(StartMenu()) 
 
-    return Main()
-    
-    // eslint-disable-next-line no-unused-expressions
+    listener()
+  
 }
 
-document.body.appendChild(component())
+component()

@@ -5,6 +5,7 @@ module.exports = {
   mode: 'development',
   entry: {
     app: './src/app.js',
+    startmenu: './src/components/startmenu.js',
   },
   devtool: 'inline-source-map',
   devServer: {

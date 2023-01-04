@@ -56,3 +56,35 @@ html {
   font-size: 62.5%;
   font-family: sans-serif;
 }
+
+.menu-container {
+  display: flex;
+  height: 100vh;
+  background-color: #cfebf3;
+  flex-direction: column;
+  // align-content: center,
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  font-size: 4rem;
+  font-weight: bold;
+  .title {
+    font-size: 6rem;
+    background: linear-gradient(90deg, #007698 40%, rgb(250, 98, 98), black 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: textShine 8s ease-in-out infinite alternate-reverse;
+    background-size: 300%;
+    background-position: -100%;
+  }
+  .start-btn {
+    background: none;
+  }
+}
+
+@keyframes textShine {
+  to {
+    background-position: 100%;
+  }
+}
