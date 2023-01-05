@@ -58,7 +58,7 @@ const Controller = () => {
         playerBoard = createBoard()
         placeShips(playerShips, playerBoard)
         placeShips(aiShips, aiBoard)
-        console.log(playerBoard)
+        console.log('Game Initialize')
     }
 
     return {

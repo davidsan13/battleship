@@ -5,7 +5,7 @@ function StartMenu() {
     const title = document.createElement('h1')
     const startBtn = document.createElement('button')
 
-    container.classList.add('menu-container')
+    container.classList.add('menu-container', 'active')
     title.classList.add('title')
     startBtn.classList.add('start-btn')
 
@@ -23,7 +23,14 @@ function listener() {
     startBtn.addEventListener('click', (e) => {
       const controller = Controller()
       controller.startGame()
+      removeActive()
     })
+}
 
+function removeActive () {
+  const active = docuement.querySelector('.active');
+  if (active != null) {
+    active.classList.remove('active')
+  }
 }
 export  {StartMenu, listener}
