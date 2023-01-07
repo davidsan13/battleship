@@ -64,7 +64,6 @@ html {
   display: -ms-flexbox;
   display: flex;
   height: 100vh;
-  background-color: #cfebf3;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -91,8 +90,28 @@ html {
   background-position: -100%;
 }
 
-.menu-container .start-btn {
-  background: none;
+.start-btn {
+  color: #18272F;
+  text-decoration: none;
+  position: relative;
+}
+
+.start-btn::before {
+  content: '';
+  background-color: rgba(83, 178, 213, 0.75);
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  width: 100%;
+  height: 8px;
+  z-index: -1;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.start-btn:hover::before {
+  bottom: 0;
+  height: 100%;
 }
 
 @-webkit-keyframes textShine {
