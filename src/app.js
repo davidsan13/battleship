@@ -6,7 +6,7 @@ import {StartMenu, listener} from './components/startmenu'
 
 function component() {
     document.body.appendChild(StartMenu()) 
-
+    document.body.appendChild(Main())
     listener()
   
 }

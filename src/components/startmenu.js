@@ -4,7 +4,7 @@ function StartMenu() {
     const container = document.createElement('div')
     const title = document.createElement('h1')
     const startBtn = document.createElement('a')
-    const p = document.createElement('p')
+    
 
     container.classList.add('menu-container', 'active')
     title.classList.add('title')
@@ -12,9 +12,8 @@ function StartMenu() {
 
     title.textContent = 'BATTLESHIP'
     startBtn.textContent = 'New Game'
-    p.appendChild(startBtn)
     container.appendChild(title)
-    container.appendChild(p)
+    container.appendChild(startBtn)
 
     return container
 }
@@ -30,8 +29,12 @@ function listener() {
 
 function removeActive () {
   const active = document.querySelector('.active');
-  if (active != null) {
+  const menu = document.querySelector('menu');
+  const main = document.querySelector('main')
+  if (active.className.includes('menu')) {
+    console.log(active)
     active.classList.remove('active')
+
   }
 }
 export  {StartMenu, listener}

@@ -60,7 +60,7 @@ html {
 .menu-container {
   display: flex;
   height: 100vh;
-  
+  visibility: hidden;
   flex-direction: column;
   // align-content: center,
   justify-content: center;
@@ -68,14 +68,17 @@ html {
   gap: 4rem;
   font-size: 4rem;
   font-weight: bold;
+  &.active {
+    visibility: visible;
+  }
   .title {
     font-size: 6rem;
-    background: linear-gradient(90deg, #007698 40%, rgb(250, 98, 98), black 80%);
+    background: linear-gradient(90deg, #007698 20%, rgb(250, 98, 98) 100%, #007698 20%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    animation: textShine 8s ease-in-out infinite alternate-reverse;
-    background-size: 300%;
+    animation: textShine 8s ease-in-out infinite;
+    background-size: 125%;
     background-position: -100%;
   }
   
@@ -85,21 +88,22 @@ html {
   color: #18272F;
   text-decoration: none;
   position: relative;
- &::before {
-  content: '';
-  background-color: hsla(196, 61%, 58%, .75);
-  position: absolute;
-  left: 0;
-  bottom: 3px;
-  width: 100%;
-  height: 8px;
-  z-index: -1;
-  transition: all .3s ease-in-out;
- }
- &:hover::before {
-  bottom: 0;
-  height: 100%;
- }
+  cursor: pointer;
+  &::before {
+    content: '';
+    background-color: hsla(196, 61%, 58%, .75);
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    width: 100%;
+    height: 8px;
+    z-index: -1;
+    transition: all .3s ease-in-out;
+  }
+  &:hover::before {
+    bottom: 0;
+    height: 100%;
+  }
   
 }
 
