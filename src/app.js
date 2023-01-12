@@ -5,8 +5,13 @@ import './assets/styles.css'
 import {StartMenu, listener} from './components/startmenu'
 
 function component() {
-    document.body.appendChild(StartMenu()) 
-    document.body.appendChild(Main())
+    const wrapper = document.createElement('div')
+    wrapper.classList.add('wrapper')
+    wrapper.appendChild(StartMenu())
+    wrapper.appendChild(Main())
+
+   
+    document.body.appendChild(wrapper)
     listener()
   
 }

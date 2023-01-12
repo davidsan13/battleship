@@ -6,6 +6,7 @@ function Main() {
   const opponentBoard = document.createElement('div')
 
   container.classList.add('main')
+  container.textContent = 'Hello'
   playerContainer.classList.add('playerContainer')
   opponentContainer.classList.add('opponentContainer')
   playerBoard.classList.add('playerBoard')
@@ -21,7 +22,7 @@ function Main() {
 function createBoard(boardContainer) {
   for(let i = 0; i<10; i++) {
     const row = document.createElement('div')
-    row.classList.add(i)
+    row.classList.add('row-'+ i)
     for(let j = 0; j<10; j++) {
       const cell = document.createElement('div')
       cell.classList.add(j)

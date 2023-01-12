@@ -23,18 +23,19 @@ function listener() {
     startBtn.addEventListener('click', (e) => {
       const controller = Controller()
       controller.startGame()
-      removeActive()
+      updateActive()
     })
 }
 
-function removeActive () {
+function updateActive () {
   const active = document.querySelector('.active');
-  const menu = document.querySelector('menu');
-  const main = document.querySelector('main')
+  const menu = document.querySelector('.menu');
+  const main = document.querySelector('.main')
+  active.classList.remove('active')
   if (active.className.includes('menu')) {
-    console.log(active)
-    active.classList.remove('active')
-
+    main.classList.add('active')
+  } else {
+    menu.classList.add('active')
   }
 }
 export  {StartMenu, listener}
