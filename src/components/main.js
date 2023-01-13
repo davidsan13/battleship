@@ -4,33 +4,40 @@ function Main() {
   const opponentContainer= document.createElement('div')
   const playerBoard = document.createElement('div')
   const opponentBoard = document.createElement('div')
+  const playerTitle = document.createElement('h1')
+  const opponentTitle = document.createElement('h1')
 
   container.classList.add('main')
-  container.textContent = 'Hello'
   playerContainer.classList.add('playerContainer')
   opponentContainer.classList.add('opponentContainer')
-  playerBoard.classList.add('playerBoard')
-  opponentBoard.classList.add('opponentBoard')
+  playerBoard.classList.add('player', 'board')
+  opponentBoard.classList.add('opponent', 'board')
 
-  
+  playerTitle.textContent = 'Player'
+  opponentTitle.textContent = 'Opponent'
+
+  playerBoard.appendChild(playerTitle)
+  opponentBoard.appendChild(opponentTitle)
   container.appendChild(createBoard(playerBoard))
   container.appendChild(createBoard(opponentBoard))
-
+  boardListener()
   return container
 }
 
 function createBoard(boardContainer) {
-  for(let i = 0; i<10; i++) {
-    const row = document.createElement('div')
-    row.classList.add('row-'+ i)
-    for(let j = 0; j<10; j++) {
+  for(let i = 0; i < 10; i++) {
+    for(let j = 0; j < 10; j++) {
       const cell = document.createElement('div')
-      cell.classList.add(j)
-      row.appendChild(cell)
+      cell.dataset.cell = `${i}${j}`
+      boardContainer.appendChild(cell)
     }
-    boardContainer.appendChild(row)
   }
   return boardContainer
+}
+
+function boardListener() {
+  const board = document.querySelector('.opponent')
+
 }
 
 export default Main

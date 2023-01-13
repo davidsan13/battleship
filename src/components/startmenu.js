@@ -20,10 +20,18 @@ function StartMenu() {
 
 function listener() {
     const startBtn = document.querySelector('.start-btn')
-    startBtn.addEventListener('click', (e) => {
+    const board = document.querySelector('.opponent').querySelectorAll('[data-cell]')
+    console.log(board)
+    startBtn.addEventListener('click', () => {
       const controller = Controller()
       controller.startGame()
       updateActive()
+    })
+    
+    board.forEach(item => {
+      item.addEventListener('click', () => {
+        console.log('hello')
+      })
     })
 }
 
