@@ -140,12 +140,13 @@ html {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(11, 1fr);
-    justify-items: center;
-    align-items: center;
+    // justify-items: center;
+    // align-items: center;
     h1 {
       font-size: 3rem;
       font-weight: bold;
       grid-column: 1 / 11 ;
+      text-align: center;
     }
     & > div  {
       border: 2px solid;

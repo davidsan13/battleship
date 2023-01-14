@@ -21,18 +21,30 @@ function StartMenu() {
 function listener() {
     const startBtn = document.querySelector('.start-btn')
     const board = document.querySelector('.opponent').querySelectorAll('[data-cell]')
-    console.log(board)
+    const controller = Controller()
     startBtn.addEventListener('click', () => {
-      const controller = Controller()
       controller.startGame()
       updateActive()
     })
     
     board.forEach(item => {
-      item.addEventListener('click', () => {
-        console.log('hello')
+      item.addEventListener('click', (e) => {
+        const coord = cellCoord(e.target)
+        const player = controller.getPlayer()
+        const aiBoard = controller.getAiBoard()
+        console.log(aiBoard)
+        player.attack(coord, aiBoard)
+        e.target.setAttribute('data-isShot', aiBoard.gameboard[coord[0]][coord[1]].isShot)
+        // console.log(aiBoard.gameboard[coord[0]][coord[1]].isShot)
       })
     })
+}
+
+function cellCoord(cell) {
+  const x = cell.dataset.cell[0]
+  const y = cell.dataset.cell[1]
+  const coord = [x,y]
+  return coord
 }
 
 function updateActive () {

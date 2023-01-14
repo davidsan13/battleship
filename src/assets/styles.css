@@ -170,10 +170,6 @@ html {
       grid-template-columns: repeat(10, 1fr);
   -ms-grid-rows: (1fr)[11];
       grid-template-rows: repeat(11, 1fr);
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .main .board h1 {
@@ -182,6 +178,7 @@ html {
   -ms-grid-column: 1;
   -ms-grid-column-span: 10;
   grid-column: 1 / 11;
+  text-align: center;
 }
 
 .main .board > div {

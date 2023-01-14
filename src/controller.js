@@ -19,8 +19,8 @@ const Controller = () => {
     function getShips() {
         return playerShips
     }
-    function getBoard(board) {
-        return board.gameboard
+    function getAiBoard() {
+        return aiBoard
     }
     function createShips() {
         const ships = []
@@ -49,6 +49,10 @@ const Controller = () => {
         })
     }
 
+    function updateDom(gameboard) {
+        const board = gameboard.gameboard
+        console.log(board)
+    }
     function startGame() {
         player = Player()
         ai = Player()
@@ -59,6 +63,7 @@ const Controller = () => {
         placeShips(playerShips, playerBoard)
         placeShips(aiShips, aiBoard)
         console.log('Game Initialize')
+        
     }
 
     return {
@@ -68,6 +73,7 @@ const Controller = () => {
         getPlayer,
         getShips,
         playerBoard,
+        getAiBoard,
     }
 }
 
