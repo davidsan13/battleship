@@ -185,4 +185,16 @@ html {
   border: 2px solid;
   margin: 0 -1px -1px 0;
 }
+
+.main .board div[data-isShot=true][data-hasShip=true] {
+  background-color: red;
+}
+
+.main .board div[data-isShot=true][data-hasShip=false] {
+  background-color: blue;
+}
+
+.main .player div[data-hasShip=true] {
+  background-color: #948d8d;
+}
 /*# sourceMappingURL=styles.css.map */

@@ -35,6 +35,8 @@ function listener() {
         console.log(aiBoard)
         player.attack(coord, aiBoard)
         e.target.setAttribute('data-isShot', aiBoard.gameboard[coord[0]][coord[1]].isShot)
+        e.target.setAttribute('data-hasShip', aiBoard.gameboard[coord[0]][coord[1]].hasShip)
+
         // console.log(aiBoard.gameboard[coord[0]][coord[1]].isShot)
       })
     })

@@ -148,9 +148,22 @@ html {
       grid-column: 1 / 11 ;
       text-align: center;
     }
+    
     & > div  {
       border: 2px solid;
       margin: 0 -1px -1px 0;
-      }
+    
+    }
+    div[data-isShot=true][data-hasShip=true] {
+      background-color: red;
+    }
+    div[data-isShot=true][data-hasShip=false] {
+      background-color: blue;
+    }
+  }
+  .player {
+    & div[data-hasShip=true] {
+      background-color: rgb(148, 141, 141);
+    }
   }
 }

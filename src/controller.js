@@ -45,13 +45,25 @@ const Controller = () => {
                 const y = Math.floor(Math.random() * 10)
                 const location = [x, y]
                 board.placeShip(ship, location)
+                // const cell = document.querySelector(`[data-cell=${location[0]}${location[1]}]`)
+                // console.log(cell)
             }
         })
     }
 
-    function updateDom(gameboard) {
+    function updatePlayerDom(gameboard) {
+        const playerUIBoard = document.querySelector('.player')
         const board = gameboard.gameboard
-        console.log(board)
+        board.forEach((x, index) => {
+            x.forEach((y, i) => {
+                if(y.hasShip) {
+                    const cell = playerUIBoard.querySelector(`[data-cell='${index}${i}']`)
+                    cell.setAttribute('data-hasShip', y.hasShip)
+                }
+            })
+            console.log(index)
+        })
+        // console.log(playerUIBoard.querySelector(`[data-cell='${x}${y}']`))
     }
     function startGame() {
         player = Player()
@@ -63,6 +75,7 @@ const Controller = () => {
         placeShips(playerShips, playerBoard)
         placeShips(aiShips, aiBoard)
         console.log('Game Initialize')
+        updatePlayerDom(playerBoard)
         
     }
 
