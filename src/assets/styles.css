@@ -182,16 +182,17 @@ html {
 }
 
 .main .board > div {
-  border: 2px solid;
+  border: 2px solid white;
   margin: 0 -1px -1px 0;
+  background-color: #5ed8d4;
 }
 
-.main .board div[data-isShot=true][data-hasShip=true] {
-  background-color: red;
+.main .board div[data-is-Shot=true][data-has-Ship=true] {
+  background-color: rgba(236, 34, 34, 0.945);
 }
 
-.main .board div[data-isShot=true][data-hasShip=false] {
-  background-color: blue;
+.main .board div[data-is-Shot=true][data-has-Ship=false] {
+  background-color: #357c7a;
 }
 
 .main .player div[data-hasShip=true] {

@@ -150,15 +150,15 @@ html {
     }
     
     & > div  {
-      border: 2px solid;
+      border: 2px solid white;
       margin: 0 -1px -1px 0;
-    
+      background-color: #5ed8d4;
     }
-    div[data-isShot=true][data-hasShip=true] {
-      background-color: red;
+    div[data-is-Shot=true][data-has-Ship=true] {
+      background-color: rgba(236, 34, 34, 0.945);
     }
-    div[data-isShot=true][data-hasShip=false] {
-      background-color: blue;
+    div[data-is-Shot=true][data-has-Ship=false] {
+      background-color: #357c7a;
     }
   }
   .player {
