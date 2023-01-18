@@ -34,7 +34,7 @@ function listener() {
         const aiBoard = controller.getAiBoard()
         console.log(aiBoard)
         player.attack(coord, aiBoard)
-        e.target.dataset.isShot =  aiBoard.gameboard[coord[0]][coord[1]].isShot
+        e.target.dataset.isShot = aiBoard.gameboard[coord[0]][coord[1]].isShot
         e.target.dataset.hasShip = aiBoard.gameboard[coord[0]][coord[1]].hasShip
         // console.log(aiBoard.gameboard[coord[0]][coord[1]].isShot)
       })

@@ -79,6 +79,24 @@ const Controller = () => {
         
     }
 
+    function ai() {
+        let attackCell = []
+
+    }
+    const ai = () => {
+        let attackCell = []
+
+        function attack() {
+            const x = Math.floor(Math.random() * 10)
+            const y = Math.floor(Math.random() * 10)
+            const cell= x + y
+        }
+
+        function updateArray(cell) {
+            attackCell.push(cell)
+        }
+    }
+
     return {
         startGame,
         createShips,
