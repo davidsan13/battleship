@@ -56,8 +56,10 @@ const Controller = () => {
         const board = gameboard.gameboard
         board.forEach((x, index) => {
             x.forEach((y, i) => {
-                if(y.hasShip) {
-                    const cell = playerUIBoard.querySelector(`[data-cell='${index}${i}']`)
+                if (y.hasShip) {
+                    const cell = playerUIBoard.querySelector(
+                        `[data-cell='${index}${i}']`
+                    )
                     cell.setAttribute('data-hasShip', y.hasShip)
                 }
             })
@@ -76,24 +78,32 @@ const Controller = () => {
         placeShips(aiShips, aiBoard)
         console.log('Game Initialize')
         updatePlayerDom(playerBoard)
-        
     }
 
     function ai() {
         let attackCell = []
-
     }
-    const ai = () => {
-        let attackCell = []
+    const ai = (aiPlayer) => {
+        let attackedCell = []
 
-        function attack() {
+        function selectCell() {
             const x = Math.floor(Math.random() * 10)
             const y = Math.floor(Math.random() * 10)
-            const cell= x + y
+            const cell = x + y
+            return cell
         }
 
         function updateArray(cell) {
             attackCell.push(cell)
+        }
+
+        function attackPlayer(aiPlayer, cell, opponentBoard) {
+            const cell = selectCell()
+            if (!attackedCell.includes(cell)) {
+                updateArray(cell)
+                const array = [cell[0], cell[1]]
+                aiPlayer.attack(array, opponentBoard)
+            }
         }
     }
 
