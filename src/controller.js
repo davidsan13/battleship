@@ -9,7 +9,8 @@ const Controller = () => {
     let aiBoard
     let playerShips
     let aiShips
-
+    let playerTurn = true
+    let coord
     function getPlayer() {
         return player
     }
@@ -80,30 +81,38 @@ const Controller = () => {
         updatePlayerDom(playerBoard)
     }
 
-    function ai() {
-        let attackCell = []
+    function updatePlayerTurn() {
+        playerTurn = false;
     }
-    const ai = (aiPlayer) => {
-        let attackedCell = []
 
-        function selectCell() {
-            const x = Math.floor(Math.random() * 10)
-            const y = Math.floor(Math.random() * 10)
-            const cell = x + y
-            return cell
-        }
+    function boardListener() {
+        const board = document.querySelector('.opponent').querySelectorAll('[data-cell]')
+        board.forEach(item => {
+            item.addEventListener('click', (e) => {
+                coord = cellCoord(e.target)
+                console.log(aiBoard)
+                
+                // console.log(aiBoard.gameboard[coord[0]][coord[1]].isShot)
+            })
+        })
+    }
 
-        function updateArray(cell) {
-            attackCell.push(cell)
-        }
+    function playerAttack() {
+      player.attack(coord, aiBoard)
+        e.target.dataset.isShot = aiBoard.gameboard[coord[0]][coord[1]].isShot
+        e.target.dataset.hasShip = aiBoard.gameboard[coord[0]][coord[1]].hasShip
+    }
 
-        function attackPlayer(aiPlayer, cell, opponentBoard) {
-            const cell = selectCell()
-            if (!attackedCell.includes(cell)) {
-                updateArray(cell)
-                const array = [cell[0], cell[1]]
-                aiPlayer.attack(array, opponentBoard)
-            }
+    function cellCoord(cell) {
+        const x = cell.dataset.cell[0]
+        const y = cell.dataset.cell[1]
+        const coord = [x,y]
+        return coord
+    }
+    
+    function winner(board, ships){
+        if(board.allSunk(ships)) {
+            
         }
     }
 

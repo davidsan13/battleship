@@ -50,20 +50,20 @@ const Gameboard = () => {
         return false
     }
 
-    function checkSunk(obj) {
+    function allSunk(obj) {
         // for(const key in Obj) {
         //   if(object[key].getSunk() === false) {
         //     return false
         //   }
         // }
-        let message = true
+        let allSunk = true
         Object.keys(obj).forEach((key) => {
             if (obj[key].getSunk() === false) {
                 console.log(obj[key])
-                message = false
+                allSunk = false
             }
         })
-        return message
+        return allSunk
     }
 
     // review notif with attack
@@ -89,7 +89,7 @@ const Gameboard = () => {
         receiveAttack,
         placeShip,
         checkhasShip,
-        checkSunk,
+        allSunk,
         getShips,
         notification,
     }

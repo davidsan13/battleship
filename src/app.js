@@ -10,7 +10,6 @@ function component() {
     wrapper.appendChild(StartMenu())
     wrapper.appendChild(Main())
 
-   
     document.body.appendChild(wrapper)
     listener()
   

@@ -20,7 +20,6 @@ function StartMenu() {
 
 function listener() {
     const startBtn = document.querySelector('.start-btn')
-    const board = document.querySelector('.opponent').querySelectorAll('[data-cell]')
     const controller = Controller()
     startBtn.addEventListener('click', () => {
       controller.startGame()
