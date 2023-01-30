@@ -195,7 +195,7 @@ html {
   background-color: #357c7a;
 }
 
-.main .player div[data-hasShip=true] {
-  background-color: #948d8d;
+.main .opponent.active > div {
+  pointer-events: none;
 }
 /*# sourceMappingURL=styles.css.map */

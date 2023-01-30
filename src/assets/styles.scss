@@ -161,9 +161,17 @@ html {
       background-color: #357c7a;
     }
   }
-  .player {
-    & div[data-hasShip=true] {
-      background-color: rgb(148, 141, 141);
+  // .player {
+  //   & div[data-hasShip=true] {
+  //     background-color: rgb(148, 141, 141);
+  //   }
+  // }
+  .opponent {
+    &.active {
+      & > div {
+        pointer-events: none;
+      }
+      
     }
   }
 }

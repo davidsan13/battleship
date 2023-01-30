@@ -26,18 +26,18 @@ function listener() {
       updateActive()
     })
     
-    board.forEach(item => {
-      item.addEventListener('click', (e) => {
-        const coord = cellCoord(e.target)
-        const player = controller.getPlayer()
-        const aiBoard = controller.getAiBoard()
-        console.log(aiBoard)
-        player.attack(coord, aiBoard)
-        e.target.dataset.isShot = aiBoard.gameboard[coord[0]][coord[1]].isShot
-        e.target.dataset.hasShip = aiBoard.gameboard[coord[0]][coord[1]].hasShip
-        // console.log(aiBoard.gameboard[coord[0]][coord[1]].isShot)
-      })
-    })
+    // board.forEach(item => {
+    //   item.addEventListener('click', (e) => {
+    //     const coord = cellCoord(e.target)
+    //     const player = controller.getPlayer()
+    //     const aiBoard = controller.getAiBoard()
+    //     console.log(aiBoard)
+    //     player.attack(coord, aiBoard)
+    //     e.target.dataset.isShot = aiBoard.gameboard[coord[0]][coord[1]].isShot
+    //     e.target.dataset.hasShip = aiBoard.gameboard[coord[0]][coord[1]].hasShip
+    //     // console.log(aiBoard.gameboard[coord[0]][coord[1]].isShot)
+    //   })
+    // })
 }
 
 function cellCoord(cell) {

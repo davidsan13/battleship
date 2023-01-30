@@ -1,7 +1,7 @@
 import Gameboard from './gameboard'
 import Player from './player'
 import Ship from './ship'
-
+import Ai from './ai'
 const Controller = () => {
     let player
     let ai
@@ -11,6 +11,8 @@ const Controller = () => {
     let aiShips
     let playerTurn = true
     let coord
+    let winner
+
     function getPlayer() {
         return player
     }
@@ -64,7 +66,6 @@ const Controller = () => {
                     cell.setAttribute('data-hasShip', y.hasShip)
                 }
             })
-            console.log(index)
         })
         // console.log(playerUIBoard.querySelector(`[data-cell='${x}${y}']`))
     }
@@ -79,40 +80,73 @@ const Controller = () => {
         placeShips(aiShips, aiBoard)
         console.log('Game Initialize')
         updatePlayerDom(playerBoard)
+        boardListener()
     }
 
     function updatePlayerTurn() {
-        playerTurn = false;
+        playerTurn = false
     }
 
     function boardListener() {
-        const board = document.querySelector('.opponent').querySelectorAll('[data-cell]')
-        board.forEach(item => {
+        const board = document
+            .querySelector('.opponent')
+            .querySelectorAll('[data-cell]')
+        board.forEach((item) => {
             item.addEventListener('click', (e) => {
                 coord = cellCoord(e.target)
-                console.log(aiBoard)
+                playerAttack(e.target)
+                console.log(e.target)
+                updatePlayerTurn()
+                activeBoard()
+                Ai(ai).attackPlayer(playerBoard)
+        updatePlayerTurn()
                 
-                // console.log(aiBoard.gameboard[coord[0]][coord[1]].isShot)
             })
         })
     }
 
-    function playerAttack() {
-      player.attack(coord, aiBoard)
-        e.target.dataset.isShot = aiBoard.gameboard[coord[0]][coord[1]].isShot
-        e.target.dataset.hasShip = aiBoard.gameboard[coord[0]][coord[1]].hasShip
+
+    function timer() {
+        setTimeout(aiMoves(), 5000)
+    }
+
+    function aiMoves() {
+        Ai(ai).attackPlayer(playerBoard)
+        updatePlayerTurn()
+    }
+    function playerAttack(e) {
+        player.attack(coord, aiBoard)
+        e.dataset.isShot = aiBoard.gameboard[coord[0]][coord[1]].isShot
+        e.dataset.hasShip = aiBoard.gameboard[coord[0]][coord[1]].hasShip
     }
 
     function cellCoord(cell) {
         const x = cell.dataset.cell[0]
         const y = cell.dataset.cell[1]
-        const coord = [x,y]
+        const coord = [x, y]
         return coord
     }
-    
-    function winner(board, ships){
-        if(board.allSunk(ships)) {
-            
+
+
+    function checkWinner(board, ships, player) {
+        if (board.allSunk(ships)) {
+            winner = player
+            return true
+        }
+        return false
+    }
+    function gameLoop() {
+        while(!winner()) {
+
+        }
+    }
+
+    function activeBoard() {
+        const oppBoard = document.querySelector('.opponent', '.board')
+        if (!playerTurn) {
+            oppBoard.classList.add('active')
+        } else {
+            oppBoard.classList.remove('active')
         }
     }
 
