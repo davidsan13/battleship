@@ -84,7 +84,11 @@ const Controller = () => {
     }
 
     function updatePlayerTurn() {
-        playerTurn = false
+        if(playerTurn) {
+            playerTurn = false
+        } else {
+            playerTurn = true
+        }
     }
 
     function boardListener() {
@@ -99,21 +103,14 @@ const Controller = () => {
                 updatePlayerTurn()
                 activeBoard()
                 Ai(ai).attackPlayer(playerBoard)
-        updatePlayerTurn()
-                
+                updatePlayerTurn()
+                activeBoard()
+                console.log(coord)
+                console.log(aiBoard.gameboard[coord[0]][coord[1]].isShot)
             })
         })
     }
 
-
-    function timer() {
-        setTimeout(aiMoves(), 5000)
-    }
-
-    function aiMoves() {
-        Ai(ai).attackPlayer(playerBoard)
-        updatePlayerTurn()
-    }
     function playerAttack(e) {
         player.attack(coord, aiBoard)
         e.dataset.isShot = aiBoard.gameboard[coord[0]][coord[1]].isShot
@@ -126,7 +123,6 @@ const Controller = () => {
         const coord = [x, y]
         return coord
     }
-
 
     function checkWinner(board, ships, player) {
         if (board.allSunk(ships)) {
