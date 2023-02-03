@@ -5,6 +5,7 @@ import Ai from './ai'
 const Controller = () => {
     let player
     let ai
+    let AiAtt
     let playerBoard
     let aiBoard
     let playerShips
@@ -72,6 +73,7 @@ const Controller = () => {
     function startGame() {
         player = Player()
         ai = Player()
+        AiAtt = Ai(ai)
         playerShips = createShips()
         aiShips = createShips()
         aiBoard = createBoard()
@@ -98,15 +100,13 @@ const Controller = () => {
         board.forEach((item) => {
             item.addEventListener('click', (e) => {
                 coord = cellCoord(e.target)
+                if(e.target.dataset.isShot) {
+                    return
+                }
                 playerAttack(e.target)
-                console.log(e.target)
                 updatePlayerTurn()
                 activeBoard()
-                Ai(ai).attackPlayer(playerBoard)
-                updatePlayerTurn()
-                activeBoard()
-                console.log(coord)
-                console.log(aiBoard.gameboard[coord[0]][coord[1]].isShot)
+                setTimeout(aiMove, 1000)
             })
         })
     }
@@ -117,6 +117,11 @@ const Controller = () => {
         e.dataset.hasShip = aiBoard.gameboard[coord[0]][coord[1]].hasShip
     }
 
+    function aiMove() {
+        AiAtt.attackPlayer(playerBoard)
+        updatePlayerTurn()
+        activeBoard()
+    }
     function cellCoord(cell) {
         const x = cell.dataset.cell[0]
         const y = cell.dataset.cell[1]
@@ -130,11 +135,6 @@ const Controller = () => {
             return true
         }
         return false
-    }
-    function gameLoop() {
-        while(!winner()) {
-
-        }
     }
 
     function activeBoard() {

@@ -175,3 +175,10 @@ html {
     }
   }
 }
+
+.gameoverCon {
+  visibility: hidden;
+  & .active {
+    visibility: visible; 
+  }
+}

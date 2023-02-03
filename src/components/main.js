@@ -20,7 +20,7 @@ function Main() {
   opponentBoard.appendChild(opponentTitle)
   container.appendChild(createBoard(playerBoard))
   container.appendChild(createBoard(opponentBoard))
-  boardListener()
+ 
   return container
 }
 
@@ -33,11 +33,6 @@ function createBoard(boardContainer) {
     }
   }
   return boardContainer
-}
-
-function boardListener() {
-  const board = document.querySelector('.opponent')
-
 }
 
 export default Main
