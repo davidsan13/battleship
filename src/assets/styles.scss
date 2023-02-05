@@ -123,20 +123,25 @@ html {
 .main {
   height: 100%;
   position: absolute;
-  height: 100%;
   width: 100%;
   visibility: hidden;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  
+  grid-template-rows: .2fr 1fr;
   justify-items: center;
   align-items: center;
   &.active {
     visibility: visible;
   }
+  .header {
+    font-size: 10rem;
+    font-weight: bold;
+    grid-column: 1/3;
+    align-self: end;
+  }
   .board {
     width: 55%;
-    height: 50%;
+    height: 75%;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(11, 1fr);
@@ -161,11 +166,11 @@ html {
       background-color: #357c7a;
     }
   }
-  // .player {
-  //   & div[data-hasShip=true] {
-  //     background-color: rgb(148, 141, 141);
-  //   }
-  // }
+  .player {
+    & div[data-hasShip=true] {
+      background-color: rgb(148, 141, 141);
+    }
+  }
   .opponent {
     &.active {
       & > div {
@@ -178,7 +183,24 @@ html {
 
 .gameoverCon {
   visibility: hidden;
+  position: absolute;
   & .active {
     visibility: visible; 
+  }
+}
+
+.notification {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  font-size: 7rem;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  visibility: hidden;
+  .message{
+    font-size: 5rem;
   }
 }

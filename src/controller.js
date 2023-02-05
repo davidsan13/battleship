@@ -106,6 +106,7 @@ const Controller = () => {
                 playerAttack(e.target)
                 updatePlayerTurn()
                 activeBoard()
+                noti(aiBoard)
                 setTimeout(aiMove, 1000)
             })
         })
@@ -121,6 +122,7 @@ const Controller = () => {
         AiAtt.attackPlayer(playerBoard)
         updatePlayerTurn()
         activeBoard()
+        noti(playerBoard)
     }
     function cellCoord(cell) {
         const x = cell.dataset.cell[0]
@@ -144,6 +146,12 @@ const Controller = () => {
         } else {
             oppBoard.classList.remove('active')
         }
+    }
+
+    function noti(gameboard) {
+        const m = document.querySelector('.message')
+        const message = gameboard.notification(coord[0], coord[1])
+        m.textContent = message
     }
 
     return {

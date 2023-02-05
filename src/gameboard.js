@@ -19,7 +19,6 @@ const Gameboard = () => {
 
     const receiveAttack = (x, y) => {
         const cell = gameboard[x][y]
-        let message
         cell.isShot = true
         if (cell.hasShip) {
             const ship = ships[cell.name]
@@ -81,7 +80,7 @@ const Gameboard = () => {
         } else {
             message = 'You Miss'
         }
-        return console.log(message)
+        return message
     }
 
     return {

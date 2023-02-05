@@ -6,18 +6,24 @@ function Main() {
   const opponentBoard = document.createElement('div')
   const playerTitle = document.createElement('h1')
   const opponentTitle = document.createElement('h1')
+  const header = document.createElement('h1')
+
 
   container.classList.add('main')
   playerContainer.classList.add('playerContainer')
   opponentContainer.classList.add('opponentContainer')
   playerBoard.classList.add('player', 'board')
   opponentBoard.classList.add('opponent', 'board')
+  header.classList.add('header')
 
+  header.textContent = 'Battleship'
   playerTitle.textContent = 'Player'
   opponentTitle.textContent = 'Opponent'
 
+  
   playerBoard.appendChild(playerTitle)
   opponentBoard.appendChild(opponentTitle)
+  container.appendChild(header)
   container.appendChild(createBoard(playerBoard))
   container.appendChild(createBoard(opponentBoard))
  
