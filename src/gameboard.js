@@ -58,7 +58,6 @@ const Gameboard = () => {
         let allSunk = true
         Object.keys(obj).forEach((key) => {
             if (obj[key].getSunk() === false) {
-                console.log(obj[key])
                 allSunk = false
             }
         })

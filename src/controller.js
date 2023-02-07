@@ -29,11 +29,12 @@ const Controller = () => {
     function createShips() {
         const ships = []
         const carrier = Ship(5, 'carrier')
-        const battleship = Ship(4, 'battleship')
-        const cruiser = Ship(3, 'cruiser')
-        const submarine = Ship(3, 'submarine')
-        const destroyer = Ship(2, 'destroyer')
-        ships.push(carrier, battleship, cruiser, submarine, destroyer)
+        // const battleship = Ship(4, 'battleship')
+        // const cruiser = Ship(3, 'cruiser')
+        // const submarine = Ship(3, 'submarine')
+        // const destroyer = Ship(2, 'destroyer')
+        ships.push(carrier)
+        // , battleship, cruiser, submarine, destroyer)
         return ships
     }
 
@@ -71,8 +72,12 @@ const Controller = () => {
         // console.log(playerUIBoard.querySelector(`[data-cell='${x}${y}']`))
     }
     function startGame() {
+        const main = document.querySelector('.main');
+        updateActive(main)
         player = Player()
         ai = Player()
+        player.name = 'Player 1'
+        ai.name = 'Ai'
         AiAtt = Ai(ai)
         playerShips = createShips()
         aiShips = createShips()
@@ -85,6 +90,11 @@ const Controller = () => {
         boardListener()
     }
 
+    function updateActive(dom){
+        const active = document.querySelector('.active');
+        active.classList.remove('active')
+        dom.classList.add('active')
+    }
     function updatePlayerTurn() {
         if(playerTurn) {
             playerTurn = false
@@ -105,9 +115,14 @@ const Controller = () => {
                 }
                 playerAttack(e.target)
                 updatePlayerTurn()
+                const winnerEl = document.querySelector('.winner');
+                
                 activeBoard()
                 noti(aiBoard)
-                setTimeout(aiMove, 1000)
+                if(!checkWinner(aiBoard, aiShips, player)) {
+                    setTimeout(aiMove, 1000)
+                }
+                
             })
         })
     }
@@ -132,8 +147,11 @@ const Controller = () => {
     }
 
     function checkWinner(board, ships, player) {
+        const winnerEl = document.querySelector('.winner');
         if (board.allSunk(ships)) {
-            winner = player
+            winner = player.name
+            winnerEl.textContent = winner
+            updateActive(winnerEl.parentElement)
             return true
         }
         return false
